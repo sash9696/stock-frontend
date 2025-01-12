@@ -9,7 +9,7 @@ const Positions = () => {
    
     const fetchAllPositions = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/api/positions");
+        const res = await axios.get(`${import.meta.env.VITE_API_KEY}/positions`);
         console.log('fetchAllPositions',{res});
 
         setAllPositions(res.data);

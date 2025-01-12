@@ -4,16 +4,26 @@ import { VerticalGraph } from "../components/VerticalGraph";
 
 // import { holdings } from "../data/data";
 
+console.log('url', {url:import.meta.env.VITE_API_KEY})
+
+
 const Holdings = () => {
   const [allHoldings, setAllHoldings] = useState([]);
 
+  // useEffect(() => {
+  //   axios.get("http://localhost:3001/api/holdings").then((res) => {
+  //     console.log('res',{res});
+  //     setAllHoldings(res.data);
+  //   });
+  // }, []);
+
+
   useEffect(() => {
-    axios.get("http://localhost:3001/api/holdings").then((res) => {
+    axios.get(`${import.meta.env.VITE_API_KEY}/holdings`).then((res) => {
       console.log('res',{res});
       setAllHoldings(res.data);
     });
   }, []);
-
   // const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   const labels = allHoldings.map((subArray) => subArray["name"]);
 
